@@ -7,6 +7,7 @@
 
   let container: HTMLDivElement;
   let game: any = null;
+  let isSceneReady = false;
 
   onMount(async () => {
     const Phaser = (await import('phaser')).default;
@@ -35,6 +36,7 @@
 
     // Wait for scene to be ready, then load level
     eventBus.on('scene-ready', () => {
+      isSceneReady = true;
       eventBus.emit('load-level', level);
       eventBus.emit('speed-change', speed);
     });
@@ -45,13 +47,16 @@
       game.destroy(true);
       game = null;
     }
-    eventBus.clear();
+    const phaserEvents = ['execute-code', 'load-code', 'resume', 'step', 'stop', 'reset', 'speed-change', 'load-level'];
+    phaserEvents.forEach(e => eventBus.deleteEvent(e));
   });
 
   // React to speed changes
   $effect(() => {
     eventBus.emit('speed-change', speed);
   });
+
+
 </script>
 
 <div class="game-canvas-wrapper" id="game-canvas">

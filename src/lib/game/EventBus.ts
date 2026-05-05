@@ -22,6 +22,10 @@ class EventBus {
   clear(): void {
     this.listeners.clear();
   }
+
+  deleteEvent(event: string): void {
+    this.listeners.delete(event);
+  }
 }
 
 export const eventBus = new EventBus();

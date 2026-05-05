@@ -84,6 +84,7 @@
   {/if}
 
   <!-- Main Layout -->
+  {#key levelIndex}
   <div class="game-layout">
     <div class="editor-panel">
       <div class="editor-area">
@@ -134,6 +135,7 @@
       </div>
     </div>
   </div>
+  {/key}
 </main>
 
 <style>

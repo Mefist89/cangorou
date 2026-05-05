@@ -41,9 +41,19 @@
   </header>
 
   <section class="levels-section">
-    <h2 class="section-title">
-      <span class="accent">▸</span> Alege nivelul
-    </h2>
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="accent">▸</span> Alege nivelul
+      </h2>
+      <button class="reset-btn" onclick={() => {
+        if(confirm('Ești sigur că vrei să resetezi tot progresul? (Are you sure you want to reset all progress?)')) {
+          progressStore.resetProgress();
+        }
+      }}>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 1 3 7"/><path d="M3 22v-6h6"/></svg>
+        Reset Progress
+      </button>
+    </div>
     <div class="levels-grid">
       {#each levels as level, i}
         <LevelCard
@@ -122,6 +132,13 @@
     padding-bottom: 40px;
   }
 
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
   .section-title {
     font-family: 'Orbitron', sans-serif;
     font-size: 0.85rem;
@@ -129,9 +146,33 @@
     color: #94a3b8;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin: 0;
   }
   .accent { color: #22d3ee; }
+
+  .reset-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 6px;
+    color: #ef4444;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .reset-btn:hover {
+    background: rgba(239, 68, 68, 0.18);
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.25);
+  }
+  .reset-btn:active {
+    transform: scale(0.96);
+  }
 
   .levels-grid {
     display: grid;
