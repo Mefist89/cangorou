@@ -1,0 +1,164 @@
+@import 'tailwindcss';
+
+/* ── Cyberpunk Design Tokens ── */
+@theme {
+  --color-navy-950: #020617;
+  --color-navy-900: #0f172a;
+  --color-navy-800: #1e293b;
+  --color-navy-700: #334155;
+  --color-navy-600: #475569;
+
+  --color-cyan-400: #22d3ee;
+  --color-cyan-500: #06b6d4;
+  --color-cyan-600: #0891b2;
+
+  --color-magenta-400: #e879f9;
+  --color-magenta-500: #d946ef;
+  --color-magenta-600: #c026d3;
+
+  --color-lime-400: #a3e635;
+  --color-lime-500: #84cc16;
+
+  --color-red-400: #f87171;
+  --color-red-500: #ef4444;
+
+  --font-family-display: 'Orbitron', sans-serif;
+  --font-family-code: 'JetBrains Mono', monospace;
+  --font-family-body: 'Inter', sans-serif;
+}
+
+/* ── Base Reset & Styles ── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-family-body);
+  background-color: var(--color-navy-950);
+  color: #e2e8f0;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar Cyberpunk ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-navy-900);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-cyan-600);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-cyan-400);
+}
+
+/* ── Neon Glow Utilities ── */
+.glow-cyan {
+  text-shadow: 0 0 7px var(--color-cyan-400), 0 0 20px var(--color-cyan-400), 0 0 42px var(--color-cyan-500);
+}
+.glow-magenta {
+  text-shadow: 0 0 7px var(--color-magenta-400), 0 0 20px var(--color-magenta-400), 0 0 42px var(--color-magenta-500);
+}
+.box-glow-cyan {
+  box-shadow: 0 0 8px var(--color-cyan-400), 0 0 20px rgba(34, 211, 238, 0.3), inset 0 0 8px rgba(34, 211, 238, 0.1);
+}
+.box-glow-magenta {
+  box-shadow: 0 0 8px var(--color-magenta-400), 0 0 20px rgba(217, 70, 239, 0.3), inset 0 0 8px rgba(217, 70, 239, 0.1);
+}
+.box-glow-lime {
+  box-shadow: 0 0 8px var(--color-lime-400), 0 0 20px rgba(132, 204, 22, 0.3), inset 0 0 8px rgba(132, 204, 22, 0.1);
+}
+
+/* ── Grid Background Pattern ── */
+.cyber-grid-bg {
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── Animated Scanline Effect ── */
+.scanlines::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  z-index: 9999;
+}
+
+/* ── Neon Button Base ── */
+.btn-neon {
+  position: relative;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--color-cyan-400);
+  background: rgba(34, 211, 238, 0.08);
+  color: var(--color-cyan-400);
+  font-family: var(--font-family-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border-radius: 4px;
+}
+.btn-neon:hover {
+  background: rgba(34, 211, 238, 0.2);
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.4), inset 0 0 12px rgba(34, 211, 238, 0.1);
+}
+.btn-neon:active {
+  transform: scale(0.97);
+}
+.btn-neon:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-neon.magenta {
+  border-color: var(--color-magenta-400);
+  background: rgba(217, 70, 239, 0.08);
+  color: var(--color-magenta-400);
+}
+.btn-neon.magenta:hover {
+  background: rgba(217, 70, 239, 0.2);
+  box-shadow: 0 0 12px rgba(217, 70, 239, 0.4), inset 0 0 12px rgba(217, 70, 239, 0.1);
+}
+
+.btn-neon.lime {
+  border-color: var(--color-lime-400);
+  background: rgba(132, 204, 22, 0.08);
+  color: var(--color-lime-400);
+}
+.btn-neon.lime:hover {
+  background: rgba(132, 204, 22, 0.2);
+  box-shadow: 0 0 12px rgba(132, 204, 22, 0.4), inset 0 0 12px rgba(132, 204, 22, 0.1);
+}
+
+/* ── Animations ── */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
