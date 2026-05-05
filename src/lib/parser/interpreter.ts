@@ -79,10 +79,15 @@ export function interpret(ast: ASTNode[], initialState: GridState): CommandActio
           } else if (node.name === 'sari') {
             const next = getNextPos(state);
             const obsKey = posKey(next.x, next.y);
-            const obs = state.obstacles.get(obsKey);
             
-            // Check if jumping over a tree
-            if (obs && obs.type === 'tree') {
+            // Safe way to get obstacle type if it's a Map
+            let isTree = false;
+            if (typeof state.obstacles.get === 'function') {
+               const obs = state.obstacles.get(obsKey);
+               if (obs && obs.type === 'tree') isTree = true;
+            }
+            
+            if (isTree) {
               // Cannot jump over tree, stay in place
             } else {
               // Check landing spot

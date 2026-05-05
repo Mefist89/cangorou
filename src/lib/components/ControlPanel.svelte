@@ -37,7 +37,7 @@
     if (errors.length > 0) { hasError = true; errorMessage = errors[0].message; return; }
     compiledCode = code;
     isPaused = false;
-    const gs: GridState = { x: level.startX, y: level.startY, direction: level.startDirection, gridWidth: level.gridWidth, gridHeight: level.gridHeight, obstacles: new Set(level.obstacles.map(o => `${o.x},${o.y}`)) };
+    const gs: GridState = { x: level.startX, y: level.startY, direction: level.startDirection, gridWidth: level.gridWidth, gridHeight: level.gridHeight, obstacles: new Map(level.obstacles.map(o => [`${o.x},${o.y}`, { type: o.type }])) };
     eventBus.emit('execute-code', interpret(ast, gs));
   }
   
@@ -48,7 +48,7 @@
       if (errors.length > 0) { hasError = true; errorMessage = errors[0].message; return; }
       compiledCode = code;
       isPaused = true;
-      const gs: GridState = { x: level.startX, y: level.startY, direction: level.startDirection, gridWidth: level.gridWidth, gridHeight: level.gridHeight, obstacles: new Set(level.obstacles.map(o => `${o.x},${o.y}`)) };
+      const gs: GridState = { x: level.startX, y: level.startY, direction: level.startDirection, gridWidth: level.gridWidth, gridHeight: level.gridHeight, obstacles: new Map(level.obstacles.map(o => [`${o.x},${o.y}`, { type: o.type }])) };
       eventBus.emit('load-code', interpret(ast, gs));
       setTimeout(() => eventBus.emit('step'), 10);
       return;
