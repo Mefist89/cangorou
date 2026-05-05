@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { background: #333; color: white; margin: 20px; }
+    canvas { border: 1px solid red; background: white; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h3>Cropped 313x313 (Frame 0)</h3>
+  <canvas id="c1" width="313" height="313"></canvas>
+  
+  <h3>Cropped 313x313 (Frame 1)</h3>
+  <canvas id="c2" width="313" height="313"></canvas>
+  
+  <script>
+    const img = new Image();
+    img.src = '/assets/obstacole.png';
+    img.onload = () => {
+      const ctx1 = document.getElementById('c1').getContext('2d');
+      ctx1.drawImage(img, 0, 0, 313, 313, 0, 0, 313, 313);
+      
+      const ctx2 = document.getElementById('c2').getContext('2d');
+      ctx2.drawImage(img, 313, 0, 313, 313, 0, 0, 313, 313);
+    };
+  </script>
+</body>
+</html>

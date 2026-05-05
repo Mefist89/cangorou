@@ -152,7 +152,7 @@
   .hint-icon { font-size:1.2rem; }
   .hint-bar p { font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:#fbbf24; margin:0; }
 
-  .game-layout { flex:1; display:grid; grid-template-columns: 0.9fr 220px 1.08fr; gap:0; overflow:hidden; }
+  .game-layout { flex:1; display:grid; grid-template-columns: 0.8fr 220px 1.25fr; gap:0; overflow:hidden; }
 
   .editor-panel { display:flex; flex-direction:column; gap:0; border-right:1px solid rgba(34,211,238,0.08); overflow:hidden; }
   .editor-area { flex:1; padding:12px; overflow:hidden; display:flex; flex-direction:column; }

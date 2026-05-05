@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { background: #333; margin: 0; padding: 20px; }
+    .container { position: relative; display: inline-block; }
+    img { max-width: none; border: 1px solid red; display: block; }
+    .line {
+      position: absolute; top: 0; bottom: 0; width: 1px; background: cyan;
+    }
+    .line-horiz {
+      position: absolute; left: 0; right: 0; height: 1px; background: yellow;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="/assets/obstacole.png" />
+    <div class="line" style="left: 313px;"></div>
+    <div class="line" style="left: 627px;"></div>
+    <div class="line" style="left: 940px;"></div>
+    <div class="line-horiz" style="top: 313px;"></div>
+    <div class="line-horiz" style="top: 627px;"></div>
+    <div class="line-horiz" style="top: 940px;"></div>
+  </div>
+</body>
+</html>

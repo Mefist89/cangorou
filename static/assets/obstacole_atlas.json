@@ -1,0 +1,52 @@
+{
+  "textures": [
+    {
+      "image": "obstacole.png",
+      "format": "RGBA8888",
+      "size": { "w": 1254, "h": 1254 },
+      "scale": 1,
+      "frames": [
+        {
+          "filename": "tree",
+          "frame": { "x": 165, "y": 0, "w": 313, "h": 313 },
+          "rotated": false,
+          "trimmed": false,
+          "spriteSourceSize": { "x": 0, "y": 0, "w": 313, "h": 313 },
+          "sourceSize": { "w": 313, "h": 313 }
+        },
+        {
+          "filename": "water",
+          "frame": { "x": 165, "y": 313, "w": 313, "h": 313 },
+          "rotated": false,
+          "trimmed": false,
+          "spriteSourceSize": { "x": 0, "y": 0, "w": 313, "h": 313 },
+          "sourceSize": { "w": 313, "h": 313 }
+        },
+        {
+          "filename": "rock",
+          "frame": { "x": 165, "y": 626, "w": 313, "h": 313 },
+          "rotated": false,
+          "trimmed": false,
+          "spriteSourceSize": { "x": 0, "y": 0, "w": 313, "h": 313 },
+          "sourceSize": { "w": 313, "h": 313 }
+        },
+        {
+          "filename": "platform",
+          "frame": { "x": 165, "y": 939, "w": 313, "h": 313 },
+          "rotated": false,
+          "trimmed": false,
+          "spriteSourceSize": { "x": 0, "y": 0, "w": 313, "h": 313 },
+          "sourceSize": { "w": 313, "h": 313 }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "app": "Custom Atlas",
+    "version": "1.0",
+    "image": "obstacole.png",
+    "format": "RGBA8888",
+    "size": { "w": 1254, "h": 1254 },
+    "scale": "1"
+  }
+}

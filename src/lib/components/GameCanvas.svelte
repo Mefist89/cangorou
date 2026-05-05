@@ -15,8 +15,8 @@
     game = new Phaser.Game({
       type: Phaser.AUTO,
       parent: container,
-      width: Math.max(level.gridWidth * 64 + 80, 480),
-      height: Math.max(level.gridHeight * 64 + 80, 400),
+      width: Math.max(level.gridWidth * 52 + 80, 480),
+      height: Math.max(level.gridHeight * 52 + 80, 400),
       transparent: true,
       scene: [GridScene],
       physics: {

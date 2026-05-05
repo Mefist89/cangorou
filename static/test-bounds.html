@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+  <canvas id="canvas" width="600" height="313" style="border: 1px solid red;"></canvas>
+  <div id="output"></div>
+  <script>
+    const img = new Image();
+    img.src = '/assets/obstacole.png';
+    img.onload = () => {
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      // Draw the first 600 pixels of the first row
+      ctx.drawImage(img, 0, 0, 600, 313, 0, 0, 600, 313);
+      
+      const imgData = ctx.getImageData(0, 0, 600, 313);
+      const data = imgData.data;
+      
+      let startPink = -1;
+      let startNormal = -1;
+      let endNormal = -1;
+      
+      for (let x = 0; x < 600; x++) {
+        let hasColor = false;
+        let isPink = false;
+        for (let y = 0; y < 313; y++) {
+          const idx = (y * 600 + x) * 4;
+          const r = data[idx], g = data[idx+1], b = data[idx+2];
+          // Check for non-white/non-transparent
+          if (r < 230 || g < 230 || b < 230) {
+            hasColor = true;
+            // Check for pink pixels (high red, low green, high blue)
+            if (r > 200 && g < 100 && b > 200) {
+              isPink = true;
+            }
+          }
+        }
+        
+        if (hasColor && startNormal === -1 && !isPink) {
+          startNormal = x;
+        }
+        if (hasColor && startNormal !== -1 && !isPink) {
+          endNormal = x;
+        }
+        if (isPink && startPink === -1) {
+          startPink = x;
+        }
+      }
+      
+      document.getElementById('output').innerHTML = `
+        Normal Tree Start: ${startNormal}<br>
+        Normal Tree End: ${endNormal}<br>
+        Pink Tree Start: ${startPink}
+      `;
+    };
+  </script>
+</body>
+</html>

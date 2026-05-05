@@ -4,7 +4,7 @@ import { eventBus } from './EventBus';
 import type { CommandAction } from '$lib/parser/interpreter';
 import type { LevelDefinition } from '$lib/stores/levels';
 
-const CELL_SIZE = 64;
+const CELL_SIZE = 52;
 const SPRITE_ROWS = 4;
 const SPRITE_COLS = 4;
 
@@ -51,11 +51,8 @@ export class GridScene extends Phaser.Scene {
       frameWidth: 313,
       frameHeight: 313
     });
-    // Load obstacole spritesheet
-    this.load.spritesheet('obstacole', '/assets/obstacole.png', {
-      frameWidth: 313,
-      frameHeight: 313
-    });
+    // Load obstacole atlas
+    this.load.atlas('obstacole', '/assets/obstacole.png', '/assets/obstacole_atlas.json');
     // Load tileset (2816x1536, 4x2 grid = 704x768 per tile)
     this.load.spritesheet('tileset', '/assets/tileset.png', {
       frameWidth: 704,
@@ -233,9 +230,9 @@ export class GridScene extends Phaser.Scene {
       const px = this.offsetX + x * CELL_SIZE;
       const py = this.offsetY + y * CELL_SIZE;
 
-      let frame = 0; // tree default
-      if (obs.type === 'rock') frame = 4;
-      else if (obs.type === 'water') frame = 12;
+      let frame = 'tree'; // default
+      if (obs.type === 'rock') frame = 'rock';
+      else if (obs.type === 'water') frame = 'water';
 
       const sprite = this.add.sprite(px + CELL_SIZE / 2, py + CELL_SIZE / 2, 'obstacole', frame);
       sprite.setDisplaySize(CELL_SIZE * 0.9, CELL_SIZE * 0.9);

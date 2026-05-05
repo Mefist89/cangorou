@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+  <canvas id="canvas" width="1254" height="1254"></canvas>
+  <div id="output"></div>
+  <script>
+    const img = new Image();
+    img.src = '/assets/obstacole.png';
+    img.onload = () => {
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      
+      const imgData = ctx.getImageData(0, 0, 1254, 313);
+      const data = imgData.data;
+      
+      let inObject = false;
+      let startX = -1;
+      const objects = [];
+      
+      for (let x = 0; x < 1254; x++) {
+        let colHasNonWhite = false;
+        for (let y = 0; y < 313; y++) {
+          const idx = (y * 1254 + x) * 4;
+          const r = data[idx], g = data[idx+1], b = data[idx+2], a = data[idx+3];
+          // Check if pixel is NOT white/transparent
+          if (a > 10 && (r < 240 || g < 240 || b < 240)) {
+            colHasNonWhite = true;
+            break;
+          }
+        }
+        
+        if (colHasNonWhite && !inObject) {
+          inObject = true;
+          startX = x;
+        } else if (!colHasNonWhite && inObject) {
+          inObject = false;
+          objects.push({ startX, endX: x - 1, width: x - startX });
+        }
+      }
+      if (inObject) {
+        objects.push({ startX, endX: 1253, width: 1254 - startX });
+      }
+      
+      document.getElementById('output').innerText = JSON.stringify(objects, null, 2);
+    };
+  </script>
+</body>
+</html>
