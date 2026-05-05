@@ -277,18 +277,15 @@ export const levels: LevelDefinition[] = [
     startDirection: 'right',
     targets: [{ x: 5, y: 5 }],
     obstacles: [
-      // Zidul exterior
-      { x: 2, y: 2, type: 'tree' }, { x: 3, y: 2, type: 'tree' }, { x: 4, y: 2, type: 'tree' }, 
-      { x: 5, y: 2, type: 'tree' }, { x: 6, y: 2, type: 'tree' }, { x: 7, y: 2, type: 'tree' },
-      { x: 7, y: 3, type: 'tree' }, { x: 7, y: 4, type: 'tree' }, { x: 7, y: 5, type: 'rock' }, // opening
-      { x: 7, y: 6, type: 'tree' }, { x: 7, y: 7, type: 'tree' },
-      { x: 6, y: 7, type: 'tree' }, { x: 5, y: 7, type: 'tree' }, { x: 4, y: 7, type: 'tree' },
-      { x: 3, y: 7, type: 'tree' }, { x: 2, y: 7, type: 'tree' },
-      { x: 2, y: 6, type: 'tree' }, { x: 2, y: 5, type: 'tree' }, { x: 2, y: 4, type: 'tree' }, { x: 2, y: 3, type: 'tree' },
-      // Zidul interior
-      { x: 4, y: 4, type: 'tree' }, { x: 4, y: 5, type: 'tree' }, { x: 5, y: 4, type: 'water' }, // opening inside
-      { x: 6, y: 4, type: 'tree' }, { x: 6, y: 5, type: 'tree' }, { x: 6, y: 6, type: 'tree' },
-      { x: 5, y: 6, type: 'tree' }, { x: 4, y: 6, type: 'tree' }
+      // Zidul exterior (Radius 3, x:2..8, y:2..8)
+      { x: 2, y: 2, type: 'tree' }, { x: 3, y: 2, type: 'tree' }, { x: 4, y: 2, type: 'tree' }, { x: 5, y: 2, type: 'tree' }, { x: 6, y: 2, type: 'tree' }, { x: 7, y: 2, type: 'tree' }, { x: 8, y: 2, type: 'tree' },
+      { x: 8, y: 3, type: 'tree' }, { x: 8, y: 4, type: 'tree' }, { x: 8, y: 5, type: 'rock' }, { x: 8, y: 6, type: 'tree' }, { x: 8, y: 7, type: 'tree' },
+      { x: 8, y: 8, type: 'tree' }, { x: 7, y: 8, type: 'tree' }, { x: 6, y: 8, type: 'tree' }, { x: 5, y: 8, type: 'tree' }, { x: 4, y: 8, type: 'tree' }, { x: 3, y: 8, type: 'tree' }, { x: 2, y: 8, type: 'tree' },
+      { x: 2, y: 7, type: 'tree' }, { x: 2, y: 6, type: 'tree' }, { x: 2, y: 5, type: 'tree' }, { x: 2, y: 4, type: 'tree' }, { x: 2, y: 3, type: 'tree' },
+      // Zidul interior (Radius 1, x:4..6, y:4..6)
+      { x: 4, y: 4, type: 'tree' }, { x: 4, y: 5, type: 'tree' }, { x: 4, y: 6, type: 'tree' },
+      { x: 5, y: 6, type: 'tree' }, { x: 6, y: 6, type: 'tree' }, { x: 6, y: 5, type: 'tree' }, { x: 6, y: 4, type: 'tree' },
+      { x: 5, y: 4, type: 'water' }
     ],
     hint: 'Găsește spărturile din zid: prima e o piatră pe care poți sări, a doua e o baltă!'
   }
